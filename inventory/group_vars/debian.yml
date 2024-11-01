@@ -1,0 +1,4 @@
+---
+
+debian_base_packages:
+  - wget

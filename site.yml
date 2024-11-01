@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+
+  roles:
+  - base_installation
+
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"

@@ -1,0 +1,32 @@
+---
+
+- name: Update and upgrade packages on Debian-based systems
+  apt:
+    update_cache: yes
+    upgrade: dist
+  when: ansible_os_family == 'Debian'
+
+- name: Update and upgrade packages on Red Hat-based systems
+  yum:
+    name: '*'
+    state: latest
+  when: ansible_os_family == 'RedHat'
+
+- name: Refresh and update packages on SUSE-based systems
+  zypper:
+    name: '*'
+    state: latest
+  when: ansible_os_family == 'Suse'
+
+- name: Install base packages on all systems
+  package: 
+    name: "{{ item }}"
+    state: present 
+  loop: "{{ all_base_packages }}"
+
+- name: Install specific base packages for Debian-based systems
+  package: 
+    name: "{{ item }}"
+    state: present 
+  loop: "{{ debian_base_packages }}"
+  when: ansible_os_family == 'Debian'

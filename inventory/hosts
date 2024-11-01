@@ -1,0 +1,13 @@
+debian:
+    hosts:
+        20.82.3.18:
+suse:
+    hosts:
+rhel_8:
+    hosts:
+rhel_9:
+    hosts:
+rhel:
+    children:
+        rhel_8:
+        rhel_9:
