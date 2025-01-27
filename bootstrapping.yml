@@ -1,0 +1,11 @@
+---
+
+- name: Create Ansible user
+  hosts: all
+  become: yes
+  tasks:
+    - name: Bootstrap and create Ansible user
+      become: yes
+      import_role:
+        name: common
+        tasks_from: deploy_ansible_user.yml
